@@ -50,7 +50,7 @@ jobs:
 
       - name: Tag Docker Images
         run: |
-          API_IMAGE=${{ vars.ACR_URL }}/netflix/api
+          API_IMAGE=${{ vars.ACR_URL }}/nestflix/api
 
           VERSION=${{ vars.MAJOR_VERSION }}.${{ vars.MINOR_VERSION }}.${{ github.run_number }}
 
@@ -58,7 +58,7 @@ jobs:
 
       - name: Save Docker Images
         run: |
-          API_IMAGE=${{ vars.ACR_URL }}/netflix/api
+          API_IMAGE=${{ vars.ACR_URL }}/nestflix/api
 
           docker save -o nestflix_api.tar $API_IMAGE
 
@@ -131,6 +131,6 @@ jobs:
       - name: Deploy Api Image to Container App
         uses: azure/container-apps-deploy-action@v1
         with:
-          imageToDeploy: ${{ vars.ACR_URL }}/netflix/api:${{ vars.MAJOR_VERSION }}.${{ vars.MINOR_VERSION }}.${{ github.run_number }}
+          imageToDeploy: ${{ vars.ACR_URL }}/nestflix/api:${{ vars.MAJOR_VERSION }}.${{ vars.MINOR_VERSION }}.${{ github.run_number }}
           resourceGroup: ${{ vars.RESOURCE_GROUP }}
           containerAppName: ${{ vars.CONTAINER_APP_NAME }}
