@@ -101,7 +101,7 @@ jobs:
           docker load -i nestflix_api.tar
 
       - name: Push latest Docker Images
-        working-directory: "${{ github.workspace }}/src/"
+        working-directory: "backend/src/"
         env:
           DOCKER_BUILDKIT: 1
           DOCKER_REGISTRY: ${{ vars.ACR_URL }}/
@@ -109,7 +109,7 @@ jobs:
           docker compose -f docker-compose.yml push
 
       - name: Push Docker Images with Version
-        working-directory: "${{ github.workspace }}/src/"
+        working-directory: "backend/src/"
         env:
           DOCKER_BUILDKIT: 1
           DOCKER_REGISTRY: ${{ vars.ACR_URL }}/
